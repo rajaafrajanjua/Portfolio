@@ -149,8 +149,8 @@ export const personalData = {
   designation: "Full stack Software Developer",
   description:
     "My name is Raja Afra Janjua, and I am a passionate Full Stack Developer with expertise in building scalable, user-friendly, and visually engaging applications. I specialize in both web and mobile development, working with technologies such as Flutter & Dart, React Native, React.js, and PHP Laravel. I am a quick learner with a self-driven attitude, always exploring new technologies and best practices to deliver high-quality solutions. My strengths lie in problem-solving, clean code, and creating seamless user experiences across platforms.I am open to exciting opportunities where I can contribute my skills to develop innovative applications that make a real impact.",
-  email: "afra.janjua@gmail.com",
-  phone: "+923047958676",
+  email: "....",
+  phone: "...",
   address: "Lahore, Pakistan",
   github: "https://github.com/rajaafrajanjua",
   facebook: "https://www.facebook.com/afra.janjua/",
