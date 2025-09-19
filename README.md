@@ -160,7 +160,7 @@ export const personalData = {
   devUsername: "rajaafrajanjua",
   resume:"...",
 };
-
+```
 ---
 
 # Deployment :rocket:
