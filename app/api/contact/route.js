@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-// Create Nodemailer transporter
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   host: 'smtp.gmail.com',
@@ -13,7 +12,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Email template
 const generateEmailTemplate = (name, email, userMessage) => `
   <div style="font-family: Arial, sans-serif; color: #333; padding: 20px; background-color: #f4f4f4;">
     <div style="max-width: 600px; margin: auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
@@ -29,7 +27,6 @@ const generateEmailTemplate = (name, email, userMessage) => `
   </div>
 `;
 
-// Helper: send email
 async function sendEmail(payload) {
   const { name, email, message: userMessage } = payload;
 
@@ -51,29 +48,46 @@ async function sendEmail(payload) {
   }
 }
 
-// API Route
+// ✅ Handle CORS
+export async function OPTIONS() {
+  return NextResponse.json({}, {
+    status: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",   // allow any domain
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+    },
+  });
+}
+
 export async function POST(request) {
   try {
     const payload = await request.json();
 
     const emailSuccess = await sendEmail(payload);
 
-    if (emailSuccess) {
-      return NextResponse.json(
-        { success: true, message: "Email sent successfully!" },
-        { status: 200 }
-      );
-    }
-
     return NextResponse.json(
-      { success: false, message: "Failed to send email." },
-      { status: 500 }
+      {
+        success: emailSuccess,
+        message: emailSuccess ? "Email sent successfully!" : "Failed to send email.",
+      },
+      {
+        status: emailSuccess ? 200 : 500,
+        headers: {
+          "Access-Control-Allow-Origin": "*", // allow cross-origin
+        },
+      }
     );
   } catch (error) {
     console.error("API Error:", error.message);
     return NextResponse.json(
       { success: false, message: "Server error occurred." },
-      { status: 500 }
+      {
+        status: 500,
+        headers: {
+          "Access-Control-Allow-Origin": "*", // allow cross-origin
+        },
+      }
     );
   }
 }
