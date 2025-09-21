@@ -1,9 +1,9 @@
-import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  host: 'smtp.gmail.com',
+  service: "gmail",
+  host: "smtp.gmail.com",
   port: 587,
   secure: false,
   auth: {
@@ -48,25 +48,28 @@ async function sendEmail(payload) {
   }
 }
 
-// ✅ Handle CORS
+// 🔹 Common CORS headers
+function corsHeaders(origin) {
+  return {
+    "Access-Control-Allow-Origin": origin || "*",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
+}
+
+// ✅ Handle preflight (OPTIONS)
 export async function OPTIONS(request) {
   const origin = request.headers.get("origin");
-
   return new Response(null, {
-    status: 204, // No content
-    headers: {
-      "Access-Control-Allow-Origin": origin || "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    },
+    status: 204,
+    headers: corsHeaders(origin),
   });
 }
 
-
+// ✅ Handle POST
 export async function POST(request) {
   try {
     const payload = await request.json();
-
     const emailSuccess = await sendEmail(payload);
 
     return NextResponse.json(
@@ -76,9 +79,7 @@ export async function POST(request) {
       },
       {
         status: emailSuccess ? 200 : 500,
-        headers: {
-          "Access-Control-Allow-Origin": "*", // allow cross-origin
-        },
+        headers: corsHeaders(request.headers.get("origin")),
       }
     );
   } catch (error) {
@@ -87,9 +88,7 @@ export async function POST(request) {
       { success: false, message: "Server error occurred." },
       {
         status: 500,
-        headers: {
-          "Access-Control-Allow-Origin": "*", // allow cross-origin
-        },
+        headers: corsHeaders(request.headers.get("origin")),
       }
     );
   }
