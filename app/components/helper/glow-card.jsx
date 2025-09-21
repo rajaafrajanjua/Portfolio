@@ -4,12 +4,12 @@ import { useEffect } from "react";
 
 const GlowCard = ({ children, identifier }) => {
   useEffect(() => {
-    if (typeof document === "undefined") return; // <-- important
+    if (typeof window === "undefined" || typeof document === "undefined") return; // guard for SSR
 
     const CONTAINER = document.querySelector(`.glow-container-${identifier}`);
     const CARDS = document.querySelectorAll(`.glow-card-${identifier}`);
 
-    if (!CONTAINER || !CARDS.length) return; // safety check
+    if (!CONTAINER || !CARDS.length) return;
 
     const CONFIG = {
       proximity: 40,
@@ -65,7 +65,6 @@ const GlowCard = ({ children, identifier }) => {
 
     RESTYLE();
 
-    // cleanup
     return () => {
       document.body.removeEventListener("pointermove", UPDATE);
     };
