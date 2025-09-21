@@ -49,16 +49,19 @@ async function sendEmail(payload) {
 }
 
 // ✅ Handle CORS
-export async function OPTIONS() {
-  return NextResponse.json({}, {
-    status: 200,
+export async function OPTIONS(request) {
+  const origin = request.headers.get("origin");
+
+  return new Response(null, {
+    status: 204, // No content
     headers: {
-      "Access-Control-Allow-Origin": "*",   // allow any domain
+      "Access-Control-Allow-Origin": origin || "*",
       "Access-Control-Allow-Methods": "POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
     },
   });
 }
+
 
 export async function POST(request) {
   try {
