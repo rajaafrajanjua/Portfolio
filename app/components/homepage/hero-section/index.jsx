@@ -89,7 +89,7 @@ function HeroSection() {
               transition={{ duration: 0.3, delay: 0.3 }}
               className="text-gray-500 mb-6 max-w-lg leading-relaxed text-sm sm:text-base"
             >
-              Building modern web & mobile applications with clean code and great user experiences.
+              Building modern web &amp; mobile applications with clean code and great user experiences.
             </motion.p>
 
             {/* Social Links */}
@@ -188,7 +188,7 @@ function HeroSection() {
               transition={{ duration: 0.3, delay: 0.3 }}
               className="text-gray-500 mb-8 max-w-lg leading-relaxed"
             >
-              Building modern web & mobile applications with clean code and great user experiences.
+              Building modern web &amp; mobile applications with clean code and great user experiences.
             </motion.p>
 
             {/* Social Links */}

@@ -186,7 +186,7 @@ function ContactSection() {
                 <span className="text-green-400 font-medium text-xs sm:text-sm">Available for work</span>
               </div>
               <p className="text-gray-400 text-xs sm:text-sm">
-                I'm currently open to freelance projects and full-time opportunities. Let's build something amazing together!
+                I&apos;m currently open to freelance projects and full-time opportunities. Let&apos;s build something amazing together!
               </p>
             </motion.div>
           </motion.div>
