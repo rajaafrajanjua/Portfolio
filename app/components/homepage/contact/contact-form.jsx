@@ -72,7 +72,7 @@ function ContactForm() {
           Send me a <span className="text-yellow-400">Message</span>
         </h3>
         <p className="text-gray-500 text-sm">
-          Have a project in mind? Let's work together to bring your ideas to life.
+          Have a project in mind? Let&apos;s work together to bring your ideas to life.
         </p>
       </motion.div>
 

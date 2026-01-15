@@ -64,7 +64,7 @@ function ContactSection() {
             transition={{ duration: 2, repeat: Infinity }}
             className="inline-block px-4 py-1.5 bg-yellow-400/10 border border-yellow-400/20 rounded-full text-yellow-400 text-sm font-medium mb-4"
           >
-            💬 Let's Talk
+            💬 Let&apos;s Talk
           </motion.span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
             Get In <span className="text-yellow-400">Touch</span>

@@ -65,7 +65,7 @@ function HeroSection() {
               transition={{ duration: 0.3, delay: 0.1 }}
               className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-4"
             >
-              Hi, I'm{" "}
+              Hi, I&apos;m{" "}
               <span className="text-yellow-400 break-words">{personalData.name}</span>
             </motion.h1>
 
@@ -164,7 +164,7 @@ function HeroSection() {
               transition={{ duration: 0.3, delay: 0.1 }}
               className="text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
             >
-              Hi, I'm{" "}
+              Hi, I&apos;m{" "}
               <span className="text-yellow-400 break-words">{personalData.name}</span>
             </motion.h1>
 
