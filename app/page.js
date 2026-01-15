@@ -12,7 +12,7 @@ import Skills from "./components/homepage/skills";
 export default function Home() {
 
   return (
-    <div suppressHydrationWarning >
+    <div suppressHydrationWarning className="pt-20">
       <HeroSection />
       <AboutSection />
       <Experience />

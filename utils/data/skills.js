@@ -10,6 +10,7 @@ export const skillsData = [
   "Flutter",
   "Dart",
   "MySQL",
+  "Room Database",
   "Git",
   "Bootstrap",
   "Figma",

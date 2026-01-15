@@ -1,13 +1,3 @@
-<p align="center" width="100%">
-    <img height="100" src="https://github.com/said7388/developer-portfolio/assets/77630868/c0064908-cd5f-4751-a77c-eba90a62b55c">
-</p>
-
----
-
-# [Built Portfolio With GitHub ](https://github.com/said7388/github-portfolio)
-
----
-
 # Developer Portfolio
 
 #### Are you struggling to create a professional portfolio website? Look no further! You can use the Developer Portfolio template and create your very own personalized portfolio today! My website is designed to be user-friendly and easily customizable, making it perfect for both developers and freelancers.
@@ -17,8 +7,6 @@
 # Demo :movie_camera:
 
 ![](./public/image/screen.png)
-
-## View live preview [here](https://abusaid.netlify.app/).
 
 ---
 
@@ -74,9 +62,9 @@ git --version
 To Fork the repo click on the fork button at the top right of the page. Once the repo is forked open your terminal and perform the following commands
 
 ```bash
-git clone https://github.com/<YOUR GITHUB USERNAME>/developer-portfolio.git
+git clone https://github.com/rajaafrajanjua/Portfolio.git
 
-cd developer-portfolio
+cd Portfolio
 ```
 
 ### Install packages from the root directory
@@ -151,22 +139,24 @@ Eg:
 
 ```javascript
 export const personalData = {
-  name: "ABU SAID",
-  profile: "/profile.png",
-  designation: "Full-Stack Software Developer",
-  description: "My name is ABU SAID....",
-  email: "abusaid7388@gmail.com",
-  phone: "+8801608797655",
-  address: "Dhaka, Bangladesh",
-  github: "https://github.com/said7388",
-  facebook: "https://www.facebook.com/abusaid.riyaz/",
-  linkedIn: "https://www.linkedin.com/in/abu-said-bd/",
-  twitter: "https://twitter.com/said7388",
-  stackOverflow: "https://stackoverflow.com/users/16840768/abu-said",
-  leetcode: "https://leetcode.com/said3812/",
-  devUsername: "said7388",
-  resume: "...",
+  name: "Raja Afra Janjua",
+  profile: "/profile.jpg",
+  designation: "Full stack Software Developer",
+  description:
+    "My name is Raja Afra Janjua, and I am a passionate Full Stack Developer with expertise in building scalable, user-friendly, and visually engaging applications. I specialize in both web and mobile development, working with technologies such as Flutter & Dart, React Native, React.js, and PHP Laravel. I am a quick learner with a self-driven attitude, always exploring new technologies and best practices to deliver high-quality solutions. My strengths lie in problem-solving, clean code, and creating seamless user experiences across platforms.I am open to exciting opportunities where I can contribute my skills to develop innovative applications that make a real impact.",
+  email: "afra.janjua@gmail.com",
+  phone: "..",
+  address: "Lahore, Pakistan",
+  github: "https://github.com/rajaafrajanjua",
+  facebook: "https://www.facebook.com/afra.janjua/",
+  linkedIn: "https://www.linkedin.com/in/raja-afra-janjua",
+  Insta: "https://www.instagram.com/raja_afra_janjua/",
+  stackOverflow: "https://stackoverflow.com/users/13930807/afra-janjua",
+  devUsername: "rajaafrajanjua",
+  resume:
+    "....",
 };
+
 ```
 
 `devUsername` is used for fetching blog posts from `dev.to`.

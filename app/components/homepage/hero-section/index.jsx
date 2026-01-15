@@ -1,213 +1,258 @@
-// @flow strict
+"use client";
 
 import { personalData } from "@/utils/data/personal-data";
-import Image from "next/image";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
+import AnimationLottie from "../../helper/animation-lottie";
+import codingAnimation from "../../../assets/lottie/coding.json";
 
 function HeroSection() {
+  const socialLinks = [
+    { href: personalData.github, icon: BsGithub },
+    { href: personalData.linkedIn, icon: BsLinkedin },
+    { href: personalData.facebook, icon: FaFacebook },
+    { href: personalData.Insta, icon: FaInstagram },
+  ];
+
   return (
-    <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
-      <Image
-        src="/hero.svg"
-        alt="Hero"
-        width={1572}
-        height={795}
-        className="absolute -top-[98px] -z-10"
-      />
+    <section className="relative min-h-screen flex items-center pt-24 pb-12 md:py-20 lg:py-12 overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-20 left-5 md:left-10 w-48 md:w-72 h-48 md:h-72 bg-yellow-400/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-5 md:right-10 w-64 md:w-96 h-64 md:h-96 bg-yellow-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-yellow-400/5 rounded-full blur-3xl" />
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(251,191,36,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(251,191,36,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+      </div>
 
-      <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-8">
-        <div className="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-20 md:pb-10 lg:pt-10">
-          <h1 className="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]">
-            Hello, <br />
-            This is <span className=" text-pink-500">{personalData.name}</span>
-            {` , I'm a Professional `}
-            <span className=" text-[#16f2b3]">{personalData.designation}</span>.
-          </h1>
+      <div className="container mx-auto px-4">
+        {/* Mobile Layout - Stacked with animation behind */}
+        <div className="relative lg:hidden">
+          {/* Lottie Animation - Background on mobile */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 0.3, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="absolute inset-0 flex justify-center items-center pointer-events-none"
+          >
+            <div className="relative w-full max-w-md">
+              <div className="absolute inset-0 bg-yellow-400/10 rounded-full blur-3xl" />
+              <AnimationLottie animationPath={codingAnimation} />
+            </div>
+          </motion.div>
 
-          <div className="my-12 flex items-center gap-5">
-            <Link
-              href={personalData.github}
-              target="_blank"
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
+          {/* Content - Overlaid on mobile */}
+          <div className="relative z-10 py-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="mb-4"
             >
-              <BsGithub size={30} />
-            </Link>
-            <Link
-              href={personalData.linkedIn}
-              target="_blank"
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
-            >
-              <BsLinkedin size={30} />
-            </Link>
-            <Link
-              href={personalData.facebook}
-              target="_blank"
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
-            >
-              <FaFacebook size={30} />
-            </Link>
-            <Link
-              href={personalData.Insta}
-              target="_blank"
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
-            >
-              <FaInstagram size={30} />
-            </Link>
-          </div>
+              <span className="inline-block px-4 py-2 bg-yellow-400/10 border border-yellow-400/30 rounded-full text-yellow-400 text-sm font-medium backdrop-blur-sm">
+                👋 Welcome to my portfolio
+              </span>
+            </motion.div>
 
-          <div className="flex items-center gap-3">
-            <Link
-              href="#contact"
-              className="bg-gradient-to-r to-pink-500 from-violet-600 p-[1px] rounded-full transition-all duration-300 hover:from-pink-500 hover:to-violet-600"
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+              className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-4"
             >
-              <button className="px-3 text-xs md:px-8 py-3 md:py-4 bg-[#0d1224] rounded-full border-none text-center md:text-sm font-medium uppercase tracking-wider text-[#ffff] no-underline transition-all duration-200 ease-out  md:font-semibold flex items-center gap-1 hover:gap-3">
-                <span>Contact me</span>
-                <RiContactsFill size={16} />
-              </button>
-            </Link>
+              Hi, I'm{" "}
+              <span className="text-yellow-400 break-words">{personalData.name}</span>
+            </motion.h1>
 
-            <Link
-              className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-3 md:px-8 py-3 md:py-4 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
-              role="button"
-              target="_blank"
-              href={personalData.resume}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
+              className="mb-4"
             >
-              <span>Get Resume</span>
-              <MdDownload size={16} />
-            </Link>
+              <p className="text-lg sm:text-xl text-gray-400">
+                A Professional{" "}
+                <span className="text-yellow-400 font-semibold">
+                  {personalData.designation}
+                </span>
+              </p>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+              className="text-gray-500 mb-6 max-w-lg leading-relaxed text-sm sm:text-base"
+            >
+              Building modern web & mobile applications with clean code and great user experiences.
+            </motion.p>
+
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.4 }}
+              className="flex items-center gap-3 mb-6"
+            >
+              {socialLinks.map((social, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.1, y: -3 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Link
+                    href={social.href}
+                    target="_blank"
+                    className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 text-gray-400 hover:text-yellow-400 hover:border-yellow-400/50 hover:bg-yellow-400/10 transition-all duration-300"
+                  >
+                    <social.icon size={18} />
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.5 }}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3"
+            >
+              <Link
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-yellow-400 text-black font-semibold rounded-full hover:bg-yellow-300 transition-all duration-300 text-sm sm:text-base"
+              >
+                Contact Me
+                <RiContactsFill size={18} />
+              </Link>
+
+              <Link
+                href={personalData.resume}
+                target="_blank"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-yellow-400 text-yellow-400 font-semibold rounded-full hover:bg-yellow-400/10 transition-all duration-300 text-sm sm:text-base backdrop-blur-sm"
+              >
+                Get Resume
+                <MdDownload size={18} />
+              </Link>
+            </motion.div>
           </div>
         </div>
-        <div className="order-1 lg:order-2 from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37]">
-          <div className="flex flex-row">
-            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
-            <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
+
+        {/* Desktop Layout - Side by side */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="mb-6"
+            >
+              <span className="inline-block px-4 py-2 bg-yellow-400/10 border border-yellow-400/30 rounded-full text-yellow-400 text-sm font-medium">
+                👋 Welcome to my portfolio
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+              className="text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
+            >
+              Hi, I'm{" "}
+              <span className="text-yellow-400 break-words">{personalData.name}</span>
+            </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
+              className="mb-6"
+            >
+              <p className="text-2xl text-gray-400">
+                A Professional{" "}
+                <span className="text-yellow-400 font-semibold">
+                  {personalData.designation}
+                </span>
+              </p>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+              className="text-gray-500 mb-8 max-w-lg leading-relaxed"
+            >
+              Building modern web & mobile applications with clean code and great user experiences.
+            </motion.p>
+
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.4 }}
+              className="flex items-center gap-4 mb-8"
+            >
+              {socialLinks.map((social, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.1, y: -3 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Link
+                    href={social.href}
+                    target="_blank"
+                    className="flex items-center justify-center w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 text-gray-400 hover:text-yellow-400 hover:border-yellow-400/50 hover:bg-yellow-400/10 transition-all duration-300"
+                  >
+                    <social.icon size={20} />
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.5 }}
+              className="flex items-center gap-4"
+            >
+              <Link
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-yellow-400 text-black font-semibold rounded-full hover:bg-yellow-300 transition-all duration-300"
+              >
+                Contact Me
+                <RiContactsFill size={18} />
+              </Link>
+
+              <Link
+                href={personalData.resume}
+                target="_blank"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-semibold rounded-full hover:bg-yellow-400/10 transition-all duration-300"
+              >
+                Get Resume
+                <MdDownload size={18} />
+              </Link>
+            </motion.div>
           </div>
-          <div className="px-4 lg:px-8 py-5">
-            <div className="flex flex-row space-x-2">
-              <div className="h-3 w-3 rounded-full bg-red-400"></div>
-              <div className="h-3 w-3 rounded-full bg-orange-400"></div>
-              <div className="h-3 w-3 rounded-full bg-green-200"></div>
+
+          {/* Right Content - Lottie Animation */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex justify-center"
+          >
+            <div className="relative w-full max-w-lg">
+              <div className="absolute inset-0 bg-yellow-400/10 rounded-full blur-3xl" />
+              <AnimationLottie animationPath={codingAnimation} />
             </div>
-          </div>
-          <div className="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8">
-            <code className="font-mono text-xs md:text-sm lg:text-base">
-              <div className="blink">
-                <span className="mr-2 text-pink-500">const</span>
-                <span className="mr-2 text-white">coder</span>
-                <span className="mr-2 text-pink-500">=</span>
-                <span className="text-gray-400">{"{"}</span>
-              </div>
-              <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-white">name:</span>
-                <span className="text-gray-400">{`'`}</span>
-                <span className="text-amber-300">Raja Afra Janjua</span>
-                <span className="text-gray-400">{`',`}</span>
-              </div>
-              <div className="ml-4 lg:ml-8 mr-2">
-                <span className=" text-white">skills:</span>
-                <span className="text-gray-400">{`['`}</span>
-                <span className="text-amber-300">ReactJs</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">React Native</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Php</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Laravel</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Flutter</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Dart</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Google Adsence</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Google Admob</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">MySql</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Git</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Firebase</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Figma</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Html</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">CSS</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Bootstrap</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Html</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Rest Api</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">JavaScript</span>
-                <span className="text-gray-400">{"'],"}</span>
-              </div>
-              <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-white">
-                  hardWorker:
-                </span>
-                <span className="text-orange-400">true</span>
-                <span className="text-gray-400">,</span>
-              </div>
-              <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-white">
-                  quickLearner:
-                </span>
-                <span className="text-orange-400">true</span>
-                <span className="text-gray-400">,</span>
-              </div>
-              <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-white">
-                  problemSolver:
-                </span>
-                <span className="text-orange-400">true</span>
-                <span className="text-gray-400">,</span>
-              </div>
-              <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-green-400">
-                  hireable:
-                </span>
-                <span className="text-orange-400">function</span>
-                <span className="text-gray-400">{"() {"}</span>
-              </div>
-              <div>
-                <span className="ml-8 lg:ml-16 mr-2 text-orange-400">
-                  return
-                </span>
-                <span className="text-gray-400">{`(`}</span>
-              </div>
-              <div>
-                <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
-                <span className="mr-2 text-white">hardWorker</span>
-                <span className="text-amber-300">&amp;&amp;</span>
-              </div>
-              <div>
-                <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
-                <span className="mr-2 text-white">problemSolver</span>
-                <span className="text-amber-300">&amp;&amp;</span>
-              </div>
-              <div>
-                <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
-                <span className="mr-2 text-white">skills.length</span>
-                <span className="mr-2 text-amber-300">&gt;=</span>
-                <span className="text-orange-400">18</span>
-              </div>
-              <div>
-                <span className="ml-8 lg:ml-16 mr-2 text-gray-400">{`);`}</span>
-              </div>
-              <div>
-                <span className="ml-4 lg:ml-8 text-gray-400">{`};`}</span>
-              </div>
-              <div>
-                <span className="text-gray-400">{`};`}</span>
-              </div>
-            </code>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

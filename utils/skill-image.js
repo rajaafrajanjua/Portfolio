@@ -88,6 +88,8 @@ import adsence from "../app/assets/svg/skills/adsence.svg";
 import admob from "../app/assets/svg/skills/admob.svg";
 import reactnative from "../app/assets/svg/skills/react-native.svg";
 import rest from "../app/assets/svg/skills/rest.svg";
+import roomdatabase from "../app/assets/svg/skills/roomDatabase.svg";
+import sqlite from "../app/assets/svg/skills/sqlite.svg";
 
 export const skillsImage = (skill) => {
   const skillID = skill.toLowerCase();
@@ -270,6 +272,10 @@ export const skillsImage = (skill) => {
       return sqlalchemy;
     case "fastapi":
       return fastapi;
+    case "room database":
+      return roomdatabase;
+    case "sqlite":
+      return sqlite;
     default:
       break;
   }

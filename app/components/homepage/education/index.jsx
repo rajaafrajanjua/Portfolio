@@ -1,84 +1,130 @@
-// @flow strict
+"use client";
+
 import { educations } from "@/utils/data/educations";
-import Image from "next/image";
-import { BsPersonWorkspace } from "react-icons/bs";
-import lottieFile from '../../../assets/lottie/study.json';
+import { motion } from "framer-motion";
+import { FaGraduationCap } from "react-icons/fa";
 import AnimationLottie from "../../helper/animation-lottie";
-import GlowCard from "../../helper/glow-card";
+import studyAnimation from "../../../assets/lottie/study.json";
 
 function Education() {
   return (
-    <div id="education" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
-      <Image
-        src="/section.svg"
-        alt="Hero"
-        width={1572}
-        height={795}
-        className="absolute top-0 -z-10"
+    <div id="education" className="py-20 lg:py-28 relative overflow-hidden">
+      {/* Background Elements */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-yellow-400/5 rounded-full"
       />
-      <div className="flex justify-center -translate-y-[1px]">
-        <div className="w-3/4">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-violet-500 to-transparent  w-full" />
-        </div>
-      </div>
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-yellow-400/5 rounded-full"
+      />
 
-      <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex  items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Educations
+      <div className="container mx-auto px-4 relative">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="text-yellow-400 text-sm font-medium tracking-widest uppercase">
+            Academic Journey
           </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-        </div>
-      </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-2">
+            My <span className="text-yellow-400">Education</span>
+          </h2>
+          <div className="w-20 h-1 bg-yellow-400 mx-auto mt-4 rounded-full" />
+        </motion.div>
 
-      <div className="py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-          <div className="flex justify-center items-start">
-            <div className="w-3/4 h-3/4">
-              <AnimationLottie animationPath={lottieFile} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Lottie Animation */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex justify-center order-2 lg:order-1"
+          >
+            <div className="relative w-full max-w-md">
+              <motion.div
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="absolute -inset-4 bg-yellow-400/5 rounded-3xl blur-2xl"
+              />
+              <AnimationLottie animationPath={studyAnimation} />
             </div>
-          </div>
+          </motion.div>
 
-          <div>
-            <div className="flex flex-col gap-6">
-              {
-                educations.map(education => (
-                  <GlowCard key={education.id} identifier={`education-${education.id}`}>
-                    <div className="p-3 relative text-white">
-                      <Image
-                        src="/blur-23.svg"
-                        alt="Hero"
-                        width={1080}
-                        height={200}
-                        className="absolute bottom-0 opacity-80"
-                      />
-                      <div className="flex justify-center">
-                        <p className="text-xs sm:text-sm text-[#16f2b3]">
-                          {education.duration}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-x-8 px-3 py-5">
-                        <div className="text-violet-500  transition-all duration-300 hover:scale-125">
-                          <BsPersonWorkspace size={36} />
-                        </div>
-                        <div>
-                          <p className="text-base sm:text-xl mb-2 font-medium uppercase">
-                            {education.title}
-                          </p>
-                          <p className="text-sm sm:text-base">{education.institution}</p>
-                        </div>
+          {/* Timeline */}
+          <div className="order-1 lg:order-2">
+            <div className="relative">
+              {/* Vertical Line */}
+              <div className="absolute left-[11px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-yellow-400 via-yellow-400/50 to-transparent" />
+              
+              {educations.map((edu, index) => (
+                <motion.div
+                  key={edu.id}
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15 }}
+                  className="relative pl-10 pb-10 last:pb-0"
+                >
+                  {/* Timeline Dot */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.15 + 0.2, type: "spring" }}
+                    className="absolute left-0 top-1 w-6 h-6 rounded-full bg-yellow-400 flex items-center justify-center shadow-lg shadow-yellow-400/30"
+                  >
+                    <motion.div
+                      animate={{ scale: [1, 1.5, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
+                      className="w-2 h-2 rounded-full bg-black"
+                    />
+                  </motion.div>
+
+                  {/* Card */}
+                  <motion.div
+                    whileHover={{ x: 10, borderColor: "rgba(251,191,36,0.5)" }}
+                    className="p-6 rounded-2xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-sm transition-all duration-300 group"
+                  >
+                    <motion.span
+                      initial={{ opacity: 0, y: -10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.15 + 0.3 }}
+                      className="inline-block px-4 py-1.5 text-xs font-semibold text-yellow-400 bg-yellow-400/10 rounded-full mb-4 border border-yellow-400/20"
+                    >
+                      {edu.duration}
+                    </motion.span>
+                    
+                    <div className="flex items-start gap-4">
+                      <motion.div
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.5 }}
+                        className="p-3 rounded-xl bg-yellow-400/10 text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-300"
+                      >
+                        <FaGraduationCap size={24} />
+                      </motion.div>
+                      <div>
+                        <h3 className="text-lg md:text-xl font-bold text-white mb-1 group-hover:text-yellow-400 transition-colors">
+                          {edu.title}
+                        </h3>
+                        <p className="text-gray-400">{edu.institution}</p>
                       </div>
                     </div>
-                  </GlowCard>
-                ))
-              }
+                  </motion.div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Education;

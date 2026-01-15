@@ -1,6 +1,6 @@
 export const personalData = {
   name: "Raja Afra Janjua",
-  profile: "/profile.jpg",
+  profile: "/profile.png",
   designation: "Full stack Software Developer",
   description:
     "My name is Raja Afra Janjua, and I am a passionate Full Stack Developer with expertise in building scalable, user-friendly, and visually engaging applications. I specialize in both web and mobile development, working with technologies such as Flutter & Dart, React Native, React.js, and PHP Laravel. I am a quick learner with a self-driven attitude, always exploring new technologies and best practices to deliver high-quality solutions. My strengths lie in problem-solving, clean code, and creating seamless user experiences across platforms.I am open to exciting opportunities where I can contribute my skills to develop innovative applications that make a real impact.",
@@ -14,5 +14,5 @@ export const personalData = {
   stackOverflow: "https://stackoverflow.com/users/13930807/afra-janjua",
   devUsername: "rajaafrajanjua",
   resume:
-    "https://drive.google.com/file/d/1k2sqcIyiLjqHKIqfXq7TvB8PbG_FxqQ6/view?usp=drive_link",
+    "https://drive.google.com/file/d/1eGGA1aSxQjf9AD-p1ldZNqf6eBaJX0wC/view?usp=drive_link",
 };
