@@ -25,7 +25,7 @@ const Projects = () => {
   };
 
   return (
-    <div id="projects" className="py-20 lg:py-28 relative overflow-hidden">
+    <div className="py-20 lg:py-28 relative overflow-hidden">
       <div className="container mx-auto px-4 relative">
         {/* Section Header */}
         <motion.div
@@ -44,8 +44,8 @@ const Projects = () => {
           <div className="w-20 h-1 bg-yellow-400 mx-auto mt-4 rounded-full" />
         </motion.div>
 
-        {/* Featured Projects */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-20">
+        {/* Featured Projects — 1 col on mobile, 3 cols on lg+ */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-12 sm:mb-20">
           {featuredProjects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -55,71 +55,71 @@ const Projects = () => {
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="relative overflow-hidden rounded-xl sm:rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-yellow-400/50 transition-all duration-300 backdrop-blur-sm">
+              <div className="relative overflow-hidden rounded-xl bg-zinc-900/80 border border-zinc-800 hover:border-yellow-400/50 transition-all duration-300 backdrop-blur-sm h-full flex flex-col">
                 {/* Image */}
-                <div className="relative h-48 sm:h-64 md:h-72 overflow-hidden">
+                <div className="relative h-40 sm:h-48 overflow-hidden flex-shrink-0">
                   <Image
                     src={`/${project.feature}`}
                     alt={project.name}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/60 to-transparent" />
-                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/50 to-transparent" />
+
                   {/* Featured Badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className="px-4 py-1.5 bg-yellow-400 rounded-full text-black text-xs font-bold shadow-lg">
+                  <div className="absolute top-3 right-3">
+                    <span className="px-3 py-1 bg-yellow-400 rounded-full text-black text-[10px] font-bold shadow-lg">
                       ⭐ Featured
                     </span>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-4 sm:p-6">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-yellow-400 transition-colors duration-300">
+                <div className="p-4 flex flex-col flex-1">
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-1.5 group-hover:text-yellow-400 transition-colors duration-300 truncate">
                     {project.name}
                   </h3>
-                  
-                  <p className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-5 line-clamp-2">
+
+                  <p className="text-gray-400 text-xs mb-3 line-clamp-2 flex-1">
                     {project.description}
                   </p>
 
                   {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
-                    {project.tools.slice(0, 4).map((tool, idx) => (
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {project.tools.slice(0, 3).map((tool, idx) => (
                       <span
                         key={idx}
-                        className="px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs bg-zinc-800 text-yellow-400 rounded-full border border-yellow-400/20"
+                        className="px-2 py-0.5 text-[10px] bg-zinc-800 text-yellow-400 rounded-full border border-yellow-400/20"
                       >
                         {tool}
                       </span>
                     ))}
-                    {project.tools.length > 4 && (
-                      <span className="px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs bg-zinc-800 text-gray-500 rounded-full">
-                        +{project.tools.length - 4}
+                    {project.tools.length > 3 && (
+                      <span className="px-2 py-0.5 text-[10px] bg-zinc-800 text-gray-500 rounded-full">
+                        +{project.tools.length - 3}
                       </span>
                     )}
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
+                  <div className="flex items-center gap-2 mt-auto">
                     {project.url && (
                       <a
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-yellow-400 text-black font-semibold rounded-full hover:bg-yellow-300 transition-all duration-300 text-sm"
+                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-yellow-400 text-black font-semibold rounded-full hover:bg-yellow-300 transition-all duration-300 text-xs flex-1"
                       >
                         Visit Live
-                        <FiExternalLink className="w-4 h-4" />
+                        <FiExternalLink className="w-3 h-3" />
                       </a>
                     )}
                     <button
                       onClick={() => openModal(project)}
-                      className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-zinc-800 text-white font-semibold rounded-full hover:bg-zinc-700 border border-zinc-700 hover:border-yellow-400/50 transition-all duration-300 text-sm"
+                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-zinc-800 text-white font-semibold rounded-full hover:bg-zinc-700 border border-zinc-700 hover:border-yellow-400/50 transition-all duration-300 text-xs flex-1"
                     >
                       View Details
-                      <FiEye className="w-4 h-4" />
+                      <FiEye className="w-3 h-3" />
                     </button>
                   </div>
                 </div>

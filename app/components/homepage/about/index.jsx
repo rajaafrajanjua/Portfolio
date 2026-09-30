@@ -13,7 +13,7 @@ function AboutSection() {
   ];
 
   return (
-    <div id="about" className="py-20 lg:py-28 relative overflow-hidden">
+    <div className="py-20 lg:py-28 relative overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -56,8 +56,14 @@ function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
-            <p className="text-gray-400 text-base lg:text-lg leading-relaxed mb-8">
-              {personalData.description}
+            <p className="text-gray-400 text-base lg:text-lg leading-relaxed mb-5">
+              {personalData.description.split('\n\n')[0]}
+            </p>
+            <p className="text-gray-500 text-sm lg:text-base leading-relaxed mb-5">
+              {personalData.description.split('\n\n')[1]}
+            </p>
+            <p className="text-gray-500 text-sm lg:text-base leading-relaxed mb-8">
+              {personalData.description.split('\n\n')[2]}
             </p>
 
             {/* Info Cards */}

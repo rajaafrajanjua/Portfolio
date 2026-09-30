@@ -26,7 +26,7 @@ function ContactSection() {
   ];
 
   return (
-    <div id="contact" className="py-20 lg:py-28 relative overflow-hidden">
+    <div className="py-20 lg:py-28 relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div

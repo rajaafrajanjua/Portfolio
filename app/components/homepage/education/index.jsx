@@ -8,7 +8,7 @@ import studyAnimation from "../../../assets/lottie/study.json";
 
 function Education() {
   return (
-    <div id="education" className="py-20 lg:py-28 relative overflow-hidden">
+    <div className="py-20 lg:py-28 relative overflow-hidden">
       {/* Background Elements */}
       <motion.div
         animate={{ rotate: 360 }}

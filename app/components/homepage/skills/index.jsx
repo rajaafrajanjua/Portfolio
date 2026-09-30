@@ -24,7 +24,7 @@ function Skills() {
     : skillCategories[activeCategory] || skillsData;
 
   return (
-    <div id="skills" className="py-20 lg:py-28 relative overflow-hidden">
+    <div className="py-20 lg:py-28 relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
@@ -56,6 +56,9 @@ function Skills() {
           </h2>
           <p className="text-gray-500 mt-4 max-w-lg mx-auto">
             Technologies and tools I use to bring ideas to life
+          </p>
+          <p className="text-gray-600 mt-3 max-w-2xl mx-auto text-sm leading-relaxed">
+            Over 2 years of professional development, I have built expertise across the full stack — from crafting pixel-perfect mobile UIs in Flutter and React Native, to building robust backend APIs with PHP Laravel, to deploying and monetizing apps on the Google Play Store. Below is the core set of technologies I work with regularly across client projects and personal builds.
           </p>
         </motion.div>
 

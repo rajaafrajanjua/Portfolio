@@ -21,6 +21,12 @@ module.exports = {
         hostname: 'media2.dev.to',
         pathname: '**',
       },
+      // Play Store app screenshots and icons
+      {
+        protocol: 'https',
+        hostname: 'play-lh.googleusercontent.com',
+        pathname: '**',
+      },
     ],
   },
 }

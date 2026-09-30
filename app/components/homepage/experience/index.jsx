@@ -8,7 +8,7 @@ import codeAnimation from "../../../assets/lottie/code.json";
 
 function Experience() {
   return (
-    <div id="experience" className="py-20 lg:py-28 relative overflow-hidden">
+    <div className="py-20 lg:py-28 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(251,191,36,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(251,191,36,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
       
@@ -79,7 +79,7 @@ function Experience() {
                       <motion.div
                         whileHover={{ rotate: 360 }}
                         transition={{ duration: 0.5 }}
-                        className="p-3 rounded-xl bg-yellow-400/10 text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-300"
+                        className="p-3 rounded-xl bg-yellow-400/10 text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-300 flex-shrink-0"
                       >
                         <BsBriefcase size={24} />
                       </motion.div>
@@ -87,7 +87,10 @@ function Experience() {
                         <h3 className="text-lg md:text-xl font-bold text-white mb-1 group-hover:text-yellow-400 transition-colors">
                           {exp.title}
                         </h3>
-                        <p className="text-gray-400">{exp.company}</p>
+                        <p className="text-yellow-400/80 font-medium text-sm mb-2">{exp.company}</p>
+                        {exp.description && (
+                          <p className="text-gray-500 text-sm leading-relaxed">{exp.description}</p>
+                        )}
                       </div>
                     </div>
                   </motion.div>

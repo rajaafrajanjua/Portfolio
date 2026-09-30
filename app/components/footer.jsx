@@ -199,21 +199,32 @@ function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-zinc-900">
         <div className="container mx-auto px-4 py-6">
-          <motion.p
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-gray-600 text-sm flex items-center justify-center gap-1.5 flex-wrap"
+            className="flex flex-col sm:flex-row items-center justify-between gap-3"
           >
-            © {new Date().getFullYear()} Raja Afra Janjua. Made with
-            <motion.span
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-            >
-              <FaHeart className="text-red-500" size={12} />
-            </motion.span>
-            and lots of ☕
-          </motion.p>
+            <p className="text-gray-600 text-sm flex items-center gap-1.5 flex-wrap justify-center sm:justify-start">
+              © {new Date().getFullYear()} Raja Afra Janjua. Made with
+              <motion.span
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{ duration: 1, repeat: Infinity }}
+              >
+                <FaHeart className="text-red-500" size={12} />
+              </motion.span>
+              and lots of ☕
+            </p>
+            <div className="flex items-center gap-4 text-xs text-gray-600">
+              <Link href="/privacy-policy" className="hover:text-yellow-400 transition-colors">
+                Privacy Policy
+              </Link>
+              <span>·</span>
+              <a href="mailto:afra.janjua@gmail.com" className="hover:text-yellow-400 transition-colors">
+                Contact
+              </a>
+            </div>
+          </motion.div>
         </div>
       </div>
     </footer>
