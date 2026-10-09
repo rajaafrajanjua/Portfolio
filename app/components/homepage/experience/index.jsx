@@ -8,7 +8,7 @@ import codeAnimation from "../../../assets/lottie/code.json";
 
 function Experience() {
   return (
-    <div className="py-20 lg:py-28 relative overflow-hidden">
+    <div id="experience" className="py-20 lg:py-28 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(251,191,36,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(251,191,36,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
       
@@ -46,19 +46,9 @@ function Experience() {
                   className="relative pl-10 pb-10 last:pb-0"
                 >
                   {/* Timeline Dot */}
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.15 + 0.2, type: "spring" }}
-                    className="absolute left-0 top-1 w-6 h-6 rounded-full bg-yellow-400 flex items-center justify-center shadow-lg shadow-yellow-400/30"
-                  >
-                    <motion.div
-                      animate={{ scale: [1, 1.5, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
-                      className="w-2 h-2 rounded-full bg-black"
-                    />
-                  </motion.div>
+                  <div className="absolute left-0 top-1 w-6 h-6 rounded-full bg-yellow-400 flex items-center justify-center shadow-lg shadow-yellow-400/30">
+                    <div className="w-2 h-2 rounded-full bg-black" />
+                  </div>
 
                   {/* Card */}
                   <motion.div

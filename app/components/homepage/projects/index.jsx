@@ -25,7 +25,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="py-20 lg:py-28 relative overflow-hidden">
+    <div id="projects" className="py-20 lg:py-28 relative overflow-hidden">
       <div className="container mx-auto px-4 relative">
         {/* Section Header */}
         <motion.div
