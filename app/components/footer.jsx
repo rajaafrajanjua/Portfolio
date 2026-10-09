@@ -35,11 +35,7 @@ function Footer() {
     <footer className="relative bg-black border-t border-zinc-900 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          animate={{ opacity: [0.02, 0.05, 0.02] }}
-          transition={{ duration: 5, repeat: Infinity }}
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(251,191,36,0.1),transparent_70%)]"
-        />
+        <div className="animate-blob-pulse absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(251,191,36,0.08),transparent_70%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(251,191,36,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(251,191,36,0.01)_1px,transparent_1px)] bg-[size:40px_40px]" />
       </div>
 
@@ -207,12 +203,7 @@ function Footer() {
           >
             <p className="text-gray-600 text-sm flex items-center gap-1.5 flex-wrap justify-center sm:justify-start">
               © {new Date().getFullYear()} Raja Afra Janjua. Made with
-              <motion.span
-                animate={{ scale: [1, 1.3, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
-              >
-                <FaHeart className="text-red-500" size={12} />
-              </motion.span>
+              <FaHeart className="text-red-500 animate-pulse" size={12} />
               and lots of ☕
             </p>
             <div className="flex items-center gap-4 text-xs text-gray-600">

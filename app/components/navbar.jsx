@@ -2,20 +2,39 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 
 const navLinks = [
-  { href: "/#about", label: "About" },
-  { href: "/#experience", label: "Experience" },
-  { href: "/#skills", label: "Skills" },
-  { href: "/#projects", label: "Projects" },
-  { href: "/#education", label: "Education" },
-  { href: "/#contact", label: "Contact" },
+  { href: "#about", label: "About" },
+  { href: "#experience", label: "Experience" },
+  { href: "#skills", label: "Skills" },
+  { href: "#projects", label: "Projects" },
+  { href: "#education", label: "Education" },
+  { href: "#blog", label: "Blog" },
+  { href: "#contact", label: "Contact" },
 ];
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  // Build the correct href: on home page use #anchor, elsewhere use /#anchor
+  const getHref = (anchor) => (isHome ? anchor : `/${anchor}`);
+
+  const handleNavClick = (e, anchor) => {
+    if (!isHome) return; // let Next.js navigate normally to /#anchor
+    e.preventDefault();
+    setIsOpen(false);
+    const id = anchor.replace("#", "");
+    const el = document.getElementById(id);
+    if (!el) return;
+    // Offset by navbar height (72px) so heading isn't hidden behind fixed bar
+    const top = el.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top, behavior: "smooth" });
+  };
 
   return (
     <motion.nav
@@ -35,6 +54,7 @@ function Navbar() {
             </Link>
           </motion.div>
 
+          {/* Desktop links */}
           <ul className="hidden md:flex items-center gap-1">
             {navLinks.map((link, index) => (
               <motion.li
@@ -43,13 +63,14 @@ function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Link
-                  href={link.href}
-                  className="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-yellow-400 transition-colors duration-300 group"
+                <a
+                  href={getHref(link.href)}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-yellow-400 transition-colors duration-300 group cursor-pointer"
                 >
                   {link.label}
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-yellow-400 group-hover:w-3/4 transition-all duration-300" />
-                </Link>
+                </a>
               </motion.li>
             ))}
             <motion.li
@@ -57,15 +78,17 @@ function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <Link
-                href="/#contact"
-                className="ml-4 px-5 py-2 text-sm font-medium text-black bg-yellow-400 rounded-full hover:bg-yellow-300 hover:shadow-lg hover:shadow-yellow-400/25 transition-all duration-300"
+              <a
+                href={getHref("#contact")}
+                onClick={(e) => handleNavClick(e, "#contact")}
+                className="ml-4 px-5 py-2 text-sm font-medium text-black bg-yellow-400 rounded-full hover:bg-yellow-300 hover:shadow-lg hover:shadow-yellow-400/25 transition-all duration-300 cursor-pointer"
               >
                 Hire Me
-              </Link>
+              </a>
             </motion.li>
           </ul>
 
+          {/* Mobile toggle */}
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(!isOpen)}
@@ -76,6 +99,7 @@ function Navbar() {
           </motion.button>
         </div>
 
+        {/* Mobile menu */}
         <motion.div
           initial={false}
           animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
@@ -90,13 +114,13 @@ function Navbar() {
                 animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -20 }}
                 transition={{ delay: index * 0.05 }}
               >
-                <Link
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block px-4 py-3 text-gray-300 hover:text-yellow-400 hover:bg-yellow-400/10 rounded-lg transition-all duration-300"
+                <a
+                  href={getHref(link.href)}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="block px-4 py-3 text-gray-300 hover:text-yellow-400 hover:bg-yellow-400/10 rounded-lg transition-all duration-300 cursor-pointer"
                 >
                   {link.label}
-                </Link>
+                </a>
               </motion.li>
             ))}
             <motion.li
@@ -104,13 +128,13 @@ function Navbar() {
               animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -20 }}
               transition={{ delay: 0.3 }}
             >
-              <Link
-                href="/#contact"
-                onClick={() => setIsOpen(false)}
-                className="block mx-4 mt-2 px-5 py-3 text-center text-black bg-yellow-400 rounded-full font-medium"
+              <a
+                href={getHref("#contact")}
+                onClick={(e) => handleNavClick(e, "#contact")}
+                className="block mx-4 mt-2 px-5 py-3 text-center text-black bg-yellow-400 rounded-full font-medium cursor-pointer"
               >
                 Hire Me
-              </Link>
+              </a>
             </motion.li>
           </ul>
         </motion.div>
