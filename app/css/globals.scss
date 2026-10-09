@@ -76,3 +76,31 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Pure-CSS blob animations — replaces Framer Motion repeat:Infinity background blobs.
+   CSS animations run on the compositor thread (no JS overhead). */
+@keyframes blob-drift-1 {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(80px, -40px); }
+}
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(-80px, 40px); }
+}
+@keyframes blob-pulse {
+  0%, 100% { opacity: 0.05; transform: scale(1); }
+  50%       { opacity: 0.10; transform: scale(1.2); }
+}
+@keyframes spin-slow {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes spin-slow-reverse {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+.animate-blob-1  { animation: blob-drift-1 20s ease-in-out infinite; }
+.animate-blob-2  { animation: blob-drift-2 25s ease-in-out infinite; }
+.animate-blob-pulse { animation: blob-pulse 20s ease-in-out infinite; }
+.animate-spin-slow  { animation: spin-slow 60s linear infinite; }
+.animate-spin-slow-reverse { animation: spin-slow-reverse 45s linear infinite; }

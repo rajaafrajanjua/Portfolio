@@ -24,19 +24,11 @@ function Skills() {
     : skillCategories[activeCategory] || skillsData;
 
   return (
-    <div className="py-20 lg:py-28 relative overflow-hidden">
-      {/* Animated Background */}
+    <div id="skills" className="py-20 lg:py-28 relative overflow-hidden">
+      {/* Animated Background — pure CSS, no JS */}
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          animate={{ x: [0, 100, 0], y: [0, -50, 0] }}
-          transition={{ duration: 20, repeat: Infinity }}
-          className="absolute top-20 left-10 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ x: [0, -100, 0], y: [0, 50, 0] }}
-          transition={{ duration: 25, repeat: Infinity }}
-          className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-yellow-500/5 rounded-full blur-3xl"
-        />
+        <div className="animate-blob-1 absolute top-20 left-10 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl" />
+        <div className="animate-blob-2 absolute bottom-20 right-10 w-[500px] h-[500px] bg-yellow-500/5 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative">

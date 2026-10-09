@@ -1,7 +1,6 @@
 import { GoogleTagManager } from "@next/third-parties/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/footer";
@@ -48,9 +47,7 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -59,20 +56,12 @@ export const metadata = {
     title: "Raja Afra Janjua – Mobile & Full-Stack Developer",
     description:
       "Portfolio of Raja Afra Janjua — Mobile and Full-Stack Developer specializing in React Native, Flutter, React.js, PHP, and Laravel. Explore published apps and web projects.",
-    images: [
-      {
-        url: "/profile.png",
-        width: 1200,
-        height: 630,
-        alt: "Raja Afra Janjua – Mobile & Full-Stack Developer",
-      },
-    ],
+    images: [{ url: "/profile.png", width: 1200, height: 630, alt: "Raja Afra Janjua – Mobile & Full-Stack Developer" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Raja Afra Janjua – Mobile & Full-Stack Developer",
-    description:
-      "Portfolio of Raja Afra Janjua — Mobile and Full-Stack Developer specializing in React Native, Flutter, React.js, PHP, and Laravel.",
+    description: "Portfolio of Raja Afra Janjua — Mobile and Full-Stack Developer specializing in React Native, Flutter, React.js, PHP, and Laravel.",
     images: ["/profile.png"],
     creator: "@rajaafrajanjua",
   },
@@ -90,15 +79,16 @@ export default function RootLayout({ children }) {
   const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
 
   return (
-    <html lang="en">
+    // data-scroll-behavior fixes Next.js scroll warning
+    <html lang="en" data-scroll-behavior="smooth">
       <head>
-        {/* Google AdSense */}
+        {/* Google AdSense — plain <script> avoids the data-nscript attribute error */}
         {adsenseId && (
-          <Script
+          // eslint-disable-next-line @next/next/no-sync-scripts
+          <script
             async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
             crossOrigin="anonymous"
-            strategy="afterInteractive"
           />
         )}
       </head>

@@ -26,28 +26,11 @@ function ContactSection() {
   ];
 
   return (
-    <div className="py-20 lg:py-28 relative overflow-hidden">
-      {/* Animated Background */}
+    <div id="contact" className="py-20 lg:py-28 relative overflow-hidden">
+      {/* Animated Background — pure CSS, no JS */}
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          animate={{ 
-            scale: [1, 1.3, 1],
-            opacity: [0.05, 0.1, 0.05],
-            rotate: [0, 180, 360]
-          }}
-          transition={{ duration: 20, repeat: Infinity }}
-          className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-yellow-400/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ 
-            scale: [1.3, 1, 1.3],
-            opacity: [0.05, 0.08, 0.05]
-          }}
-          transition={{ duration: 15, repeat: Infinity }}
-          className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-yellow-500/10 rounded-full blur-3xl"
-        />
-        
-        {/* Grid Pattern */}
+        <div className="animate-blob-pulse absolute top-0 left-1/4 w-[500px] h-[500px] bg-yellow-400/10 rounded-full blur-3xl" />
+        <div className="animate-blob-pulse absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-yellow-500/5 rounded-full blur-3xl" style={{animationDelay: '10s'}} />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(251,191,36,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(251,191,36,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
       </div>
 
@@ -59,13 +42,9 @@ function ContactSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <motion.span
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="inline-block px-4 py-1.5 bg-yellow-400/10 border border-yellow-400/20 rounded-full text-yellow-400 text-sm font-medium mb-4"
-          >
+          <span className="inline-block px-4 py-1.5 bg-yellow-400/10 border border-yellow-400/20 rounded-full text-yellow-400 text-sm font-medium mb-4 animate-pulse">
             💬 Let&apos;s Talk
-          </motion.span>
+          </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
             Get In <span className="text-yellow-400">Touch</span>
           </h2>
@@ -83,11 +62,7 @@ function ContactSection() {
             className="lg:col-span-3 order-2 lg:order-1"
           >
             <div className="relative">
-              <motion.div
-                animate={{ rotate: [0, 5, -5, 0] }}
-                transition={{ duration: 10, repeat: Infinity }}
-                className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 to-yellow-600/20 rounded-2xl sm:rounded-3xl blur-xl"
-              />
+              <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 to-yellow-600/20 rounded-2xl sm:rounded-3xl blur-xl" />
               <div className="relative bg-zinc-900/90 rounded-xl sm:rounded-2xl border border-zinc-800 p-4 sm:p-6 md:p-8 backdrop-blur-xl">
                 <ContactForm />
               </div>
@@ -178,11 +153,7 @@ function ContactSection() {
               className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-yellow-400/10 to-yellow-600/5 border border-yellow-400/20 backdrop-blur-sm"
             >
               <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-                <motion.div
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-400 rounded-full shadow-lg shadow-green-400/50"
-                />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-400 rounded-full shadow-lg shadow-green-400/50 animate-pulse" />
                 <span className="text-green-400 font-medium text-xs sm:text-sm">Available for work</span>
               </div>
               <p className="text-gray-400 text-xs sm:text-sm">

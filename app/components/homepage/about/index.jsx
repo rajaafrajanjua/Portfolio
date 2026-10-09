@@ -12,8 +12,10 @@ function AboutSection() {
     { value: "10+", label: "Happy Clients" },
   ];
 
+  const paragraphs = personalData.description.split('\n\n');
+
   return (
-    <div className="py-20 lg:py-28 relative overflow-hidden">
+    <div id="about" className="py-20 lg:py-28 relative overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -56,15 +58,15 @@ function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
-            <p className="text-gray-400 text-base lg:text-lg leading-relaxed mb-5">
-              {personalData.description.split('\n\n')[0]}
-            </p>
-            <p className="text-gray-500 text-sm lg:text-base leading-relaxed mb-5">
-              {personalData.description.split('\n\n')[1]}
-            </p>
-            <p className="text-gray-500 text-sm lg:text-base leading-relaxed mb-8">
-              {personalData.description.split('\n\n')[2]}
-            </p>
+            {/* Bio paragraphs — split by \n\n so each renders separately */}
+            {paragraphs.map((para, i) => (
+              <p
+                key={i}
+                className={`leading-relaxed mb-5 ${i === 0 ? "text-gray-400 text-base lg:text-lg" : "text-gray-500 text-sm lg:text-base"}`}
+              >
+                {para}
+              </p>
+            ))}
 
             {/* Info Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-8">

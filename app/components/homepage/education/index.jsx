@@ -8,18 +8,10 @@ import studyAnimation from "../../../assets/lottie/study.json";
 
 function Education() {
   return (
-    <div className="py-20 lg:py-28 relative overflow-hidden">
-      {/* Background Elements */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-yellow-400/5 rounded-full"
-      />
-      <motion.div
-        animate={{ rotate: -360 }}
-        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-yellow-400/5 rounded-full"
-      />
+    <div id="education" className="py-20 lg:py-28 relative overflow-hidden">
+      {/* Background Elements — pure CSS spin, no JS */}
+      <div className="animate-spin-slow absolute top-1/2 left-1/2 w-[800px] h-[800px] border border-yellow-400/5 rounded-full pointer-events-none" />
+      <div className="animate-spin-slow-reverse absolute top-1/2 left-1/2 w-[600px] h-[600px] border border-yellow-400/5 rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 relative">
         {/* Section Header */}
@@ -47,11 +39,7 @@ function Education() {
             className="flex justify-center order-2 lg:order-1"
           >
             <div className="relative w-full max-w-md">
-              <motion.div
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="absolute -inset-4 bg-yellow-400/5 rounded-3xl blur-2xl"
-              />
+              <div className="absolute -inset-4 bg-yellow-400/5 rounded-3xl blur-2xl" />
               <AnimationLottie animationPath={studyAnimation} />
             </div>
           </motion.div>
@@ -72,19 +60,9 @@ function Education() {
                   className="relative pl-10 pb-10 last:pb-0"
                 >
                   {/* Timeline Dot */}
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.15 + 0.2, type: "spring" }}
-                    className="absolute left-0 top-1 w-6 h-6 rounded-full bg-yellow-400 flex items-center justify-center shadow-lg shadow-yellow-400/30"
-                  >
-                    <motion.div
-                      animate={{ scale: [1, 1.5, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
-                      className="w-2 h-2 rounded-full bg-black"
-                    />
-                  </motion.div>
+                  <div className="absolute left-0 top-1 w-6 h-6 rounded-full bg-yellow-400 flex items-center justify-center shadow-lg shadow-yellow-400/30">
+                    <div className="w-2 h-2 rounded-full bg-black" />
+                  </div>
 
                   {/* Card */}
                   <motion.div
